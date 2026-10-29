@@ -60,6 +60,17 @@
         .dash-actions { display: flex; align-items: center; gap: 12px; margin-top: 28px; }
         .logout-button { min-height: 44px; padding: 0 15px; border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-weight: 700; }
         .logout-button:hover { border-color: var(--coral); color: #a53d2f; }
+        .field select, .field textarea { display: block; width: 100%; margin-top: 8px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--ink); font: inherit; }
+        .field input[type="file"] { padding: 10px 13px; }
+        .alert { margin: 18px 0 0; padding: 12px 16px; border-radius: 4px; background: var(--lime); color: var(--green-dark); font-weight: 700; }
+        .table-wrap { margin-top: 24px; overflow-x: auto; }
+        .tabel { width: 100%; border-collapse: collapse; }
+        .tabel th, .tabel td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+        .tabel th { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+        .tabel small { color: var(--muted); }
+        .aksi { display: flex; gap: 8px; }
+        .thumb { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 6px; object-fit: cover; background: var(--line); }
+        .logout-button { display: inline-flex; align-items: center; text-decoration: none; }
         @media (max-width: 760px) {
             .page { width: min(100% - 24px, 520px); }
             .topbar { padding: 18px 0; }
@@ -81,7 +92,7 @@
                 <span class="brand-name">Kantin Kita</span>
             </a>
             @auth
-                <span>{{ auth()->user()->name }}</span>
+                <span>{{ auth()->user()->username }}</span>
             @endauth
         </header>
         @yield('content')

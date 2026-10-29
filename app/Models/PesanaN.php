@@ -4,7 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PesanaN extends Model
+class Pesanan extends Model
 {
-    //
+    protected $table = 'pesanan';
+
+    public $timestamps = false;
+
+    protected $fillable = ['user_id', 'menu_id', 'jumlah', 'total_harga', 'status'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
 }

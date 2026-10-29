@@ -6,7 +6,7 @@
     <main class="dashboard">
         <section class="dash-panel">
             <p class="eyebrow">Ruang siswa</p>
-            <h1>Hai, {{ auth()->user()->name }}.</h1>
+            <h1>Hai, {{ auth()->user()->username }}.</h1>
             <span class="role-tag">Siswa</span>
             <p>Anda berhasil masuk ke akun siswa kantin.</p>
             <div class="dash-actions">

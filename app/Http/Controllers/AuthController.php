@@ -27,7 +27,7 @@ class AuthController extends Controller
         ]);
 
         if (! Auth::attempt([
-            'email' => $credentials['username'],
+            'username' => $credentials['username'],
             'password' => $credentials['password'],
         ])) {
             return back()
