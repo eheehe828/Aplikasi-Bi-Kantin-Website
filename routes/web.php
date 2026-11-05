@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KasirController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,22 @@ Route::middleware('auth')->group(function () {
         Route::get('/menu/{menu}/edit', [AdminController::class, 'menuEdit'])->name('menu.edit');
         Route::put('/menu/{menu}', [AdminController::class, 'menuUpdate'])->name('menu.update');
         Route::delete('/menu/{menu}', [AdminController::class, 'menuDestroy'])->name('menu.destroy');
+        Route::get('/pesanan', [AdminController::class, 'pesananIndex'])->name('pesanan.index');
+        Route::patch('/pesanan/{pesanan}', [AdminController::class, 'pesananUpdate'])->name('pesanan.update');
     });
 
     // ===== SISWA =====
-    Route::middleware('role:siswa')->group(function () {
-        Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.dashboard');
+    Route::middleware('role:siswa')->prefix('siswa')->name('siswa.')->group(function () {
+        Route::get('/', [SiswaController::class, 'index'])->name('dashboard');
+        Route::post('/menu/{menu}/pesan', [SiswaController::class, 'pesan'])->name('pesan');
+        Route::get('/riwayat', [SiswaController::class, 'riwayat'])->name('riwayat');
+        Route::get('/pesanan/{pesanan}/bayar', [SiswaController::class, 'bayar'])->name('bayar');
+        Route::post('/pesanan/{pesanan}/bayar', [SiswaController::class, 'simpanBayar'])->name('bayar.simpan');
+    });
+
+    // ===== KASIR =====
+    Route::middleware('role:kasir')->prefix('kasir')->name('kasir.')->group(function () {
+        Route::get('/', [KasirController::class, 'index'])->name('dashboard');
+        Route::patch('/pesanan/{pesanan}', [KasirController::class, 'updateStatus'])->name('pesanan.status');
     });
 });

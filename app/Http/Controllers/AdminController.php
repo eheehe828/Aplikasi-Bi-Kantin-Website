@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use App\Models\Pesanan;
 
 class AdminController extends Controller
 {
@@ -71,7 +72,29 @@ class AdminController extends Controller
 
         return to_route('admin.menu.index')->with('sukses', 'Menu berhasil dihapus.');
     }
+    private const STATUS = ['Menunggu Konfirmasi', 'Lunas', 'Sedang Dimasak', 'Siap Diambil', 'Selesai'];
 
+    public function pesananIndex(): View
+    {
+        $pesanan = Pesanan::with(['user', 'menu'])->latest('id')->get();
+
+        return view('admin.pesanan.index', [
+            'pesanan' => $pesanan,
+            'daftarStatus' => self::STATUS,
+        ]);
+    }
+
+    public function pesananUpdate(Request $request, Pesanan $pesanan): RedirectResponse
+    {
+        $data = $request->validate([
+            'status' => ['required', 'in:' . implode(',', self::STATUS)],
+        ]);
+
+        $pesanan->update(['status' => $data['status']]);
+
+        return to_route('admin.pesanan.index')
+            ->with('sukses', "Pesanan #{$pesanan->id} diubah menjadi {$data['status']}.");
+    }
     private function validasi(Request $request): array
     {
         return $request->validate([

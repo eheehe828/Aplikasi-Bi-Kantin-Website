@@ -46,15 +46,17 @@
                                 </td>
                                 <td>{{ $menu->kategori }}</td>
                                 <td>Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
-                                <td class="aksi">
-                                    <a class="logout-button" href="{{ route('admin.menu.edit', $menu) }}">Edit</a>
-                                    <form method="POST" action="{{ route('admin.menu.destroy', $menu) }}"
-                                          onsubmit="return confirm('Hapus menu {{ $menu->nama_menu }}?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="logout-button" type="submit">Hapus</button>
-                                    </form>
-                                </td>
+                                <td>
+    <div class="aksi">
+        <a class="logout-button" href="{{ route('admin.menu.edit', $menu) }}">Edit</a>
+        <form method="POST" action="{{ route('admin.menu.destroy', $menu) }}"
+              onsubmit="return confirm('Hapus menu {{ $menu->nama_menu }}?')">
+            @csrf
+            @method('DELETE')
+            <button class="logout-button" type="submit">Hapus</button>
+        </form>
+    </div>
+</td>
                             </tr>
                         @empty
                             <tr><td colspan="5">Belum ada menu.</td></tr>

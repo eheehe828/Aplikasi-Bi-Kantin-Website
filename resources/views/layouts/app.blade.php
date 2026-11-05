@@ -71,6 +71,29 @@
         .aksi { display: flex; gap: 8px; }
         .thumb { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 6px; object-fit: cover; background: var(--line); }
         .logout-button { display: inline-flex; align-items: center; text-decoration: none; }
+        .dash-panel h2 { margin: 32px 0 0; font-size: 22px; }
+        .alert-error { background: #fde8e8; color: #9b1c1c; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 20px 0 8px; }
+        .menu-card { display: grid; gap: 8px; align-content: start; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+        .menu-card img, .foto-kosong { width: 100%; height: 130px; border-radius: 6px; object-fit: cover; }
+        .foto-kosong { display: grid; place-items: center; background: var(--line); color: var(--muted); font-size: 13px; }
+        .menu-card small { color: var(--muted); }
+        .menu-card form { display: flex; gap: 8px; align-items: center; }
+        .menu-card input[type="number"] { width: 70px; padding: 9px; border: 1px solid var(--line); border-radius: 4px; font: inherit; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--lime); color: var(--green-dark); font-size: 12px; font-weight: 700; white-space: nowrap; }
+        .form-status { display: flex; gap: 8px; align-items: center; }
+        .form-status select { padding: 9px; border: 1px solid var(--line); border-radius: 4px; background: white; font: inherit; }
+        .ringkasan { display: flex; flex-wrap: wrap; gap: 28px; margin: 20px 0 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+        .ringkasan div { display: grid; gap: 4px; }
+        .ringkasan span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+        .metode-list { display: grid; gap: 10px; margin: 16px 0; }
+        .metode { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: white; cursor: pointer; font-weight: 700; }
+        .metode:has(input:checked) { border-color: var(--green-dark); background: var(--lime); }
+        .metode input { width: auto; margin: 0; }
+        .metode-info { margin: 0 0 8px; padding: 16px; border: 1px dashed var(--line); border-radius: 8px; background: white; }
+        .metode-info[hidden] { display: none; }
+        .metode-info p { margin: 6px 0; }
+        .qris { display: block; width: 220px; max-width: 100%; margin-bottom: 10px; }
         @media (max-width: 760px) {
             .page { width: min(100% - 24px, 520px); }
             .topbar { padding: 18px 0; }

@@ -37,12 +37,12 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return to_route($request->user()->role === 'admin' ? 'admin.dashboard' : 'siswa.dashboard');
+        return to_route($this->tujuan($request->user()->role));
     }
 
     public function dashboard(Request $request): RedirectResponse
     {
-        return to_route($request->user()->role === 'admin' ? 'admin.dashboard' : 'siswa.dashboard');
+        return to_route($this->tujuan($request->user()->role));
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -53,5 +53,14 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return to_route('login');
+    }
+
+    private function tujuan(string $role): string
+    {
+        return match ($role) {
+            'admin' => 'admin.dashboard',
+            'kasir' => 'kasir.dashboard',
+            default => 'siswa.dashboard',
+        };
     }
 }

@@ -10,7 +10,12 @@ class Pesanan extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['user_id', 'menu_id', 'jumlah', 'total_harga', 'status'];
+    protected $fillable = ['user_id', 'menu_id', 'jumlah', 'total_harga', 'status', 'metode_pembayaran'];
+
+    protected function casts(): array
+    {
+        return ['created_at' => 'datetime'];
+    }
 
     public function user()
     {

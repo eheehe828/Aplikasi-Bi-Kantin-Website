@@ -10,6 +10,7 @@
             <span class="role-tag">Administrator</span>
             <div class="dash-actions">
                 <a class="button" href="{{ route('admin.menu.index') }}">Kelola Menu</a>
+                <a class="button" href="{{ route('admin.pesanan.index') }}">Pesanan Masuk</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="logout-button" type="submit">Keluar</button>
